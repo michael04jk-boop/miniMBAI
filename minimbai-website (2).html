@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini MBAi - B2B Marketing AI Transformation Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2180A0;
+            --primary-dark: #1a6480;
+            --accent-1: #3bb8c6;
+            --accent-2: #a8622d;
+            --bg-light: #f5f5f5;
+            --text-dark: #134252;
+            --text-light: #666;
+            --week-1: #4a9dc4;
+            --week-2: #2fb98e;
+            --week-3: #b366d9;
+            --week-4: #e89b3c;
+            --week-5: #d85d5d;
+            --week-6: #17a697;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-1);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-button {
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: var(--text-dark);
+        }
+
+        .tab-button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .week-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .week-card {
+            background: white;
+            border-left: 5px solid var(--week-1);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .week-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .week-card.week-2 { border-left-color: var(--week-2); }
+        .week-card.week-3 { border-left-color: var(--week-3); }
+        .week-card.week-4 { border-left-color: var(--week-4); }
+        .week-card.week-5 { border-left-color: var(--week-5); }
+        .week-card.week-6 { border-left-color: var(--week-6); }
+
+        .week-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .week-time {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .week-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .week-topics {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .week-topics li {
+            list-style: none;
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .week-topics li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-box {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .feature-box p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--bg-light);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(33, 128, 160, 0.05) 0%, rgba(33, 128, 160, 0.02) 100%);
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-light);
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 25px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .accordion {
+            margin-bottom: 30px;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--bg-light);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: var(--bg-light);
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: #efefef;
+        }
+
+        .accordion-content {
+            padding: 20px;
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 500px;
+        }
+
+        .stat-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-section p, .footer-section a {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 8px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: var(--text-light);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: var(--text-dark);
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .modal ul, .modal ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .week-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🚀 Mini MBAi</div>
+            <nav>
+                <a href="#overview">Overview</a>
+                <a href="#curriculum">Curriculum</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your B2B Marketing with AI</h1>
+            <p>6-week executive program. 8 hours/week. $1,950 all-in. Immediately implementable.</p>
+            <a href="#pricing" class="cta-button">Start Learning Today</a>
+        </div>
+    </section>
+
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title">Program Overview</h2>
+            
+            <div class="stat-boxes">
+                <div class="stat-box">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Weeks</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">Total Hours</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Templates</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Deliverables</div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🎓</div>
+                    <h3>B2B-Specific</h3>
+                    <p>Not generic AI. Focused entirely on B2B marketing transformation with real-world case studies.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Hands-On</h3>
+                    <p>30+ practical deliverables. Build actual marketing assets you can use in your organization.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">👥</div>
+                    <h3>Expert-Led</h3>
+                    <p>Live sessions with CMOs, VP Ops, and intelligence practitioners sharing real strategies.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Modular</h3>
+                    <p>Each week stands alone. Take just the weeks you need or the complete program.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Achievable</h3>
+                    <p>8 hours per week fits busy schedules. No all-consuming commitment required.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💰</div>
+                    <h3>Affordable</h3>
+                    <p>$1,950-$2,350 vs. $5,000-7,500 for comparable programs. No hidden costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum">
+        <div class="container">
+            <h2 class="section-title">6-Week Curriculum</h2>
+            
+            <div class="week-cards">
+                <div class="week-card week-1" onclick="openWeekModal(1)">
+                    <div class="week-title">Week 1: AI Foundations</div>
+                    <div class="week-time">8 hours | 2.25 hours live</div>
+                    <div class="week-description">Learn AI fundamentals, assess organizational maturity, and establish governance framework.</div>
+                    <div class="week-topics">
+                        <ul>
+                            <li>AI in B2B marketing</li>
+                            <li>Maturity assessment</li>
+                            <li>Ethics & governance</li>
+                            <li>Tool selection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week-card week-2" onclick="openWeekModal(2)">
+                    <div class="week-title">Week 2: Intelligence</div>
+                    <div class="week-time">8 hours | 1.5 hours live</div>
+                    <div class="week-description">Master competitive intelligence, build personas, and analyze customer voice at scale.</div>
+                    <div class="week-topics">
+                        <ul>
+                            <li>Competitive analysis</li>
+                            <li>Persona development</li>
+                            <li>VOC analysis</li>
+                            <li>Tool evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week-card week-3" onclick="openWeekModal(3)">
+                    <div class="week-title">Week 3: Strategy</div>
+                    <div class="week-time">8 hours | 1.5 hours live</div>
+                    <div class="week-description">Develop AI-enhanced ICP, create GTM strategies, and build messaging frameworks.</div>
+                    <div class="week-topics">
+                        <ul>
+                            <li>Strategic analysis</li>
+                            <li>ICP definition</li>
+                            <li>Positioning</li>
+                            <li>Messaging hierarchy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week-card week-4" onclick="openWeekModal(4)">
+                    <div class="week-title">Week 4: Content</div>
+                    <div class="week-time">8 hours | 1.75 hours live</div>
+                    <div class="week-description">Create content at scale with AI while maintaining quality, voice, and authenticity.</div>
+                    <div class="week-topics">
+                        <ul>
+                            <li>Content ideation</li>
+                            <li>Multi-format production</li>
+                            <li>Campaign design</li>
+                            <li>AI tools mastery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week-card week-5" onclick="openWeekModal(5)">
+                    <div class="week-title">Week 5: Operations</div>
+                    <div class="week-time">8 hours | 1.5 hours live</div>
+                    <div class="week-description">Build automation workflows, scoring models, and predictive revenue systems.</div>
+                    <div class="week-topics">
+                        <ul>
+                            <li>Workflow automation</li>
+                            <li>Lead scoring</li>
+                            <li>Pipeline forecasting</li>
+                            <li>Sales enablement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week-card week-6" onclick="openWeekModal(6)">
+                    <div class="week-title">Week 6: Leadership</div>
+                    <div class="week-time">8 hours | 2 hours live</div>
+                    <div class="week-description">Design governance, operating models, and 12-month AI transformation roadmaps.</div>
+                    <div class="week-topics">
+                        <ul>
+                            <li>Governance frameworks</li>
+                            <li>Operating models</li>
+                            <li>Change management</li>
+                            <li>Transformation roadmap</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">What You'll Get</h2>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">📚</div>
+                    <h3>150+ Pages</h3>
+                    <p>Comprehensive reading materials and guides covering all topics in depth.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🎬</div>
+                    <h3>150+ Minutes Video</h3>
+                    <p>High-quality pre-recorded modules + 9.5 hours of live expert sessions.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📋</div>
+                    <h3>50+ Templates</h3>
+                    <p>Ready-to-use frameworks for every marketing challenge and situation.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💼</div>
+                    <h3>30+ Deliverables</h3>
+                    <p>Build real marketing assets you can implement immediately in your role.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">👨‍💼</div>
+                    <h3>Expert Panel</h3>
+                    <p>Learn from CMOs, RevOps leaders, and intelligence practitioners.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community</h3>
+                    <p>12-month access to peer network and community support channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Individual Weeks</h3>
+                    <div class="price">$350-400</div>
+                    <div class="price-label">per week</div>
+                    <p>Pick and choose the weeks most relevant to your role</p>
+                    <ul class="pricing-features">
+                        <li>All week materials</li>
+                        <li>Live sessions</li>
+                        <li>Templates included</li>
+                        <li>3-month community</li>
+                    </ul>
+                    <a href="#" class="cta-button">Choose Weeks</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>⭐ Full Program</h3>
+                    <div class="price">$1,950</div>
+                    <div class="price-label">all 6 weeks</div>
+                    <p><strong>Most Popular</strong> - Save $300 vs. individual weeks</p>
+                    <ul class="pricing-features">
+                        <li>All 6 weeks complete</li>
+                        <li>Expert sessions</li>
+                        <li>50+ templates</li>
+                        <li>12-month community</li>
+                        <li>Certificate</li>
+                        <li>Job board access</li>
+                    </ul>
+                    <a href="#" class="cta-button">Enroll Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Full + Capstone</h3>
+                    <div class="price">$2,350</div>
+                    <div class="price-label">program + project</div>
+                    <p>Complete program + 20-hour capstone project with mentorship</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Full</li>
+                        <li>Capstone project</li>
+                        <li>Instructor reviews</li>
+                        <li>Portfolio piece</li>
+                        <li>Lifetime community</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Full Package</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                <h4 style="margin-bottom: 15px;">Group Pricing Available</h4>
+                <p>3+ people: 15% off | 6+ people: 20% off | 11+ people: 25% off</p>
+                <p style="margin-top: 10px; color: var(--text-light);">Contact us for custom group programs and team pricing</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Implementation Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Content Development (Weeks 1-4)</h4>
+                        <p>Record modules, create templates, curate materials, develop assessments</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Expert Recruitment (Weeks 5-6)</h4>
+                        <p>Recruit speakers, schedule sessions, test technology, train teaching assistants</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Marketing Launch (Weeks 7-8)</h4>
+                        <p>Build website, create promotional content, email campaigns, partnerships</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Pilot Cohort (Weeks 9-14)</h4>
+                        <p>Launch first cohort, gather feedback, refine curriculum, create testimonials</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h4>Scale & Growth (Weeks 15+)</h4>
+                        <p>Multiple cohorts, corporate programs, international expansion, versions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Can I take individual weeks instead of the full program?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes! Each week is designed to work standalone. You can purchase any 1-6 weeks based on your needs. However, we recommend taking weeks in order (1-6) for the best learning progression. Individual weeks are $350-400 each.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>How much time does this really take per week?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Exactly 8 hours per week, broken down as:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>3.5 hours: Pre-recorded modules (watch anytime)</li>
+                            <li>1.75 hours average: Live expert sessions (Tuesday/Thursday/Friday)</li>
+                            <li>1.5-2 hours: Hands-on labs and practice</li>
+                            <li>0.75-1.25 hours: Quizzes and project work</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>What if I can't make live sessions?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>All live sessions are recorded and available on-demand within 24 hours. You can watch them on your schedule. However, we strongly recommend attending live sessions to engage with peers and ask questions in real-time.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Do I need any prior AI experience?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>No. This program is designed for marketing professionals with 5+ years experience but no AI background. We start with fundamentals in Week 1 and build from there. All tools are free (or free trials) so you can learn as you go.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>What's included in the program?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>✓ All pre-recorded modules (lifetime access)<br>
+                        ✓ All live expert sessions + recordings<br>
+                        ✓ 50+ templates and frameworks<br>
+                        ✓ 150+ pages of reading materials<br>
+                        ✓ Case studies and examples<br>
+                        ✓ Community access (12 months)<br>
+                        ✓ Certificate of completion<br>
+                        ✓ 1-2 office hours included<br>
+                        ✓ Job board access (alumni)</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Is there a capstone project?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, the capstone is optional (additional $400 or included with $2,350 package). It's a 4-6 week project after the program where you build one or more comprehensive deliverables ready for implementation. You get 3 instructor review sessions, peer feedback, and lifetime community access.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Do I get a certificate?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes. Upon completing all 6 weeks, you receive a professional certificate of completion. You also get week completion badges, job board access, and (with capstone) a credential-worthy portfolio piece.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>What's your satisfaction guarantee?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We're confident you'll love this program. If you're not satisfied after the first week, we offer a full refund. No questions asked. We also have a 85%+ completion rate with 4.5+/5 student ratings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Program</h4>
+                    <a href="#curriculum">Curriculum</a>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Download Curriculum Guide</a>
+                    <a href="#">View Sample Materials</a>
+                    <a href="#">Meet the Instructors</a>
+                    <a href="#">Student Testimonials</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: hello@minimbai.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Office Hours: Mon-Fri 9am-5pm EST</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Newsletter</a>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 14px;">
+                <p>&copy; 2026 Mini MBAi. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.8);">Privacy Policy</a> | <a href="#" style="color: rgba(255,255,255,0.8);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals for each week -->
+    <div id="weekModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWeekModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        function openWeekModal(week) {
+            const weekData = {
+                1: {
+                    title: "Week 1: AI Foundations for B2B Marketing Leadership",
+                    hours: "8 hours (2.25 live, 1.5 hands-on)",
+                    learningObjectives: [
+                        "Understand AI fundamentals and applications in B2B marketing",
+                        "Assess organizational AI maturity and readiness",
+                        "Evaluate marketing AI tools available in the market",
+                        "Develop initial AI governance and policy framework",
+                        "Create accountability partnerships for ongoing learning"
+                    ],
+                    modules: [
+                        "AI Transformation in B2B Marketing (45 min)",
+                        "AI Maturity Assessment Framework (45 min)",
+                        "Ethical AI & Governance Foundations (60 min)",
+                        "Tools Setup Workshop (60 min)"
+                    ],
+                    deliverables: [
+                        "AI Tools Audit (current tools inventory)",
+                        "Organizational Maturity Assessment (baseline)",
+                        "Draft Team AI Policy",
+                        "Quiz (70%+ passing score required)",
+                        "Accountability Partnership established"
+                    ],
+                    templates: [
+                        "AI Maturity Assessment (20 dimensions)",
+                        "AI Tools Audit Tracker",
+                        "AI Policy Framework",
+                        "Prompt Library (30 pre-built prompts)",
+                        "Prompt Engineering Template"
+                    ]
+                },
+                2: {
+                    title: "Week 2: AI for B2B Customer & Market Intelligence",
+                    hours: "8 hours (1.5 live, 2 hands-on)",
+                    learningObjectives: [
+                        "Leverage AI for competitive intelligence and market analysis",
+                        "Build data-driven buyer personas and buying committee maps",
+                        "Implement Voice of Customer (VOC) analysis at scale",
+                        "Select and evaluate intelligence tools",
+                        "Create actionable intelligence reports"
+                    ],
+                    modules: [
+                        "Competitive Intelligence Fundamentals (90 min)",
+                        "Persona Development with AI (45 min)",
+                        "Voice of Customer Analysis Methods (30 min)"
+                    ],
+                    deliverables: [
+                        "Competitive Intelligence Report (2-3 pages)",
+                        "B2B Buyer Personas (2 complete + map)",
+                        "Intelligence Tool Evaluation Matrix",
+                        "Quiz",
+                        "Peer feedback from discussion"
+                    ],
+                    templates: [
+                        "Competitive Analysis Framework",
+                        "B2B Persona Canvas (detailed)",
+                        "Buying Committee Map",
+                        "Tool Evaluation Matrix"
+                    ]
+                },
+                3: {
+                    title: "Week 3: AI for B2B Strategy & GTM Planning",
+                    hours: "8 hours (1.5 live, 2 hands-on)",
+                    learningObjectives: [
+                        "Use AI to develop refined go-to-market strategies",
+                        "Create data-driven ICP definitions and segmentation",
+                        "Develop AI-informed positioning and messaging",
+                        "Build comprehensive GTM plans aligned to personas",
+                        "Create fit scoring models for lead qualification"
+                    ],
+                    modules: [
+                        "AI-Supported Strategic Analysis (60 min)",
+                        "ICP & Segmentation with AI (60 min)",
+                        "Positioning & Messaging (60 min)"
+                    ],
+                    deliverables: [
+                        "Complete ICP Definition (2-3 pages)",
+                        "GTM Plan (3-5 pages)",
+                        "Messaging Framework (1-2 pages)",
+                        "Quiz",
+                        "Peer feedback from CMO speaker"
+                    ],
+                    templates: [
+                        "Market Opportunity Analysis",
+                        "ICP Definition (15-20 dimensions)",
+                        "Fit Scoring Model (Excel)",
+                        "GTM Canvas",
+                        "Messaging Hierarchy Template"
+                    ]
+                },
+                4: {
+                    title: "Week 4: AI for B2B Content & Campaign Production",
+                    hours: "8 hours (1.75 live, 1.75 hands-on)",
+                    learningObjectives: [
+                        "Develop content strategy and editorial calendars using AI",
+                        "Create multi-format content at scale with generative AI",
+                        "Build AI-informed content that ranks and converts",
+                        "Design integrated campaigns with AI-powered variations",
+                        "Implement content production workflows and QA"
+                    ],
+                    modules: [
+                        "Content Ideation Frameworks (45 min)",
+                        "Multi-Format Content Production (45 min)",
+                        "Campaign Architecture & Testing (45 min)"
+                    ],
+                    deliverables: [
+                        "Thought Leadership Article (800-1200 words)",
+                        "Multi-Channel Content Package (emails + posts + landing copy)",
+                        "Campaign Brief (1 page)",
+                        "Quiz",
+                        "Peer feedback from workshop"
+                    ],
+                    templates: [
+                        "Editorial Calendar (3-month)",
+                        "Blog Post Template",
+                        "Email Sequence Template",
+                        "Landing Page Outline",
+                        "Campaign Brief"
+                    ]
+                },
+                5: {
+                    title: "Week 5: AI for B2B Marketing Operations & Automation",
+                    hours: "8 hours (1.5 live, 2 hands-on)",
+                    learningObjectives: [
+                        "Identify marketing processes for AI-powered automation",
+                        "Build no-code automation workflows using Zapier/Make",
+                        "Develop predictive lead scoring and pipeline forecasting models",
+                        "Implement AI for sales enablement and personalization",
+                        "Calculate ROI and implement measurement frameworks"
+                    ],
+                    modules: [
+                        "Workflow Automation Fundamentals (45 min)",
+                        "Lead Scoring & Pipeline Forecasting (45 min)",
+                        "Sales Enablement with AI (30 min)"
+                    ],
+                    deliverables: [
+                        "Automation Workflow Documentation (1-2 pages + diagram)",
+                        "Lead Scoring Model (Excel-based)",
+                        "Sales Enablement Asset (battlecard OR email OR one-pager)",
+                        "Quiz",
+                        "Office hours attendance/recording"
+                    ],
+                    templates: [
+                        "Process Mapping Worksheet",
+                        "Lead Scoring Model (Excel)",
+                        "Sales Battlecard",
+                        "Email Sequence Template",
+                        "One-Pager Template"
+                    ]
+                },
+                6: {
+                    title: "Week 6: B2B AI Leadership, Governance & Adoption",
+                    hours: "8 hours (2 live, 1.5 hands-on)",
+                    learningObjectives: [
+                        "Develop comprehensive AI governance frameworks",
+                        "Design organizational operating models for AI",
+                        "Plan change management and adoption strategies",
+                        "Build 12-month AI transformation roadmaps",
+                        "Lead and sustain AI transformation in your organization"
+                    ],
+                    modules: [
+                        "Governance & Risk Management (60 min)",
+                        "Operating Model Design (60 min)",
+                        "Change Management (45 min)"
+                    ],
+                    deliverables: [
+                        "Governance Framework (2-3 pages)",
+                        "Operating Model Canvas (1-2 pages + diagrams)",
+                        "12-Month Roadmap (1-page visual + 2-3 pages detailed)",
+                        "Quiz",
+                        "Capstone project scope (if applicable)"
+                    ],
+                    templates: [
+                        "Risk Assessment Matrix",
+                        "AI Policy Framework",
+                        "Compliance Checklist",
+                        "Operating Model Canvas",
+                        "12-Month Roadmap"
+                    ]
+                }
+            };
+
+            const data = weekData[week];
+            let html = `
+                <h2>${data.title}</h2>
+                <p style="font-weight: bold; margin: 20px 0 10px 0;">⏱️ Time Commitment: ${data.hours}</p>
+                
+                <h3 style="margin-top: 30px; margin-bottom: 10px;">Learning Objectives:</h3>
+                <ul>
+            `;
+            
+            data.learningObjectives.forEach(obj => {
+                html += `<li>${obj}</li>`;
+            });
+            
+            html += `</ul>
+                <h3 style="margin-top: 30px; margin-bottom: 10px;">Pre-Recorded Modules:</h3>
+                <ul>
+            `;
+            
+            data.modules.forEach(mod => {
+                html += `<li>${mod}</li>`;
+            });
+            
+            html += `</ul>
+                <h3 style="margin-top: 30px; margin-bottom: 10px;">Deliverables (Due Sunday):</h3>
+                <ul>
+            `;
+            
+            data.deliverables.forEach(del => {
+                html += `<li><strong>✓</strong> ${del}</li>`;
+            });
+            
+            html += `</ul>
+                <h3 style="margin-top: 30px; margin-bottom: 10px;">Templates & Tools Provided:</h3>
+                <ul>
+            `;
+            
+            data.templates.forEach(tpl => {
+                html += `<li>${tpl}</li>`;
+            });
+            
+            html += `</ul>`;
+            
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('weekModal').style.display = 'block';
+        }
+
+        function closeWeekModal() {
+            document.getElementById('weekModal').style.display = 'none';
+        }
+
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+            const icon = element.querySelector('span:last-child');
+            icon.textContent = item.classList.contains('open') ? '−' : '+';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('weekModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
